@@ -7,20 +7,8 @@ import Homepage from './components/homepage/Homepage';
 
 const BaseRouter = (props) => (
     <Hoc>
-        {
-            props.token === null ? (
-                <Route exact path = '/' component = { Homepage } />
-            ) : (
-                <div>
-                    
-                </div>
-            )
-        }
+        <Route exact path = '/' component = { Homepage } />
     </Hoc>
 );
 
-const mapStateToProps = state => {
-    return { token: state.auth.token };
-};
-
-export default withRouter(connect(mapStateToProps)(BaseRouter));
+export default BaseRouter;

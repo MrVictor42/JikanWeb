@@ -4,8 +4,8 @@ const DetailsLists = ({ item }) => {
 
     return (
         <>
-            <p> Description: { item.description } </p> 
-            <p> adhsakhdskaj </p>
+            <p> Score: { item.score } </p> 
+            <p> Gender: { item.genders[0].name  }</p>
         </>
     );
 }
