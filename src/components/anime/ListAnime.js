@@ -39,11 +39,15 @@ const ListAnime = () => {
                     >
                         <List.Item.Meta
                             style = {{ paddingTop: '20px' }}
-                            title= { <a href = { item.href }> { <b> { item.title } </b> } </a> }
+                            title= { 
+                                <a href = { `/anime/${ item.slug }` }> 
+                                    { <b> { item.title } </b> } 
+                                </a> 
+                            }
                         />
                         <List.Item.Meta
                             avatar = { <Image width = { 'auto' } src = { item.image_url } /> }
-                            description = { <DetailsLists item = { item }/> }
+                            description = { <DetailsLists item = { item } visible = { false }/> }
                         />
                     </List.Item>
                 )}

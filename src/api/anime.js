@@ -14,3 +14,16 @@ export const getListAnime = async() => {
         return false;
     }
 };
+
+export const getAnime = async(slug) => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get(`anime/${ slug }`);;
+    } catch {
+        return false;
+    }
+};

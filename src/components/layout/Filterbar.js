@@ -13,7 +13,6 @@ const Filterbar = () => {
 	const [producers, setProducers] = useState('');
 	const [selectGender, setSelectGender] = useState('');
 	const [selectProducer, setSelectProducer] = useState('');
-	const [clear] = useState(false);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
@@ -73,14 +72,14 @@ const Filterbar = () => {
 				<Form.Item label = { <b> Genres </b> } >
 					<Cascader
 						placeholder = { selectGender } 
-						options = { genders } value = { clear }
+						options = { genders } 
 						onChange = { onChangeGenres } style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
 				<Form.Item label = { <b> Producers </b> } >
 					<Cascader
 						placeholder = { selectProducer } 
-						options = { producers }  value = { clear }
+						options = { producers }  
 						onChange = { onChangeProducers }  style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
