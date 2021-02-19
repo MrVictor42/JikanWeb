@@ -27,11 +27,11 @@ const ListAnime = () => {
             <List
                 itemLayout = 'vertical' size = 'small'
                 pagination = {{ 
-                    position: 'both', showSizeChanger: false}} grid = {{ column: 2 }}
+                    position: 'both', showSizeChanger: false }} grid = {{ column: 2 }}
                 dataSource = { animeList } 
                 style = {{ 
                     margin: 'auto', width: 'auto', paddingLeft: '30px', 
-                    paddingRight: '30px' 
+                    paddingRight: '35px' 
                 }}
                 renderItem = { item => (
                     <List.Item 

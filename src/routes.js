@@ -5,7 +5,7 @@ import Hoc from './hoc/hoc';
 import Homepage from './components/homepage/Homepage';
 import DetailAnime from './components/anime/DetailAnime';
 
-const BaseRouter = (props) => (
+const BaseRouter = () => (
     <Hoc>
         <Route exact path = '/' component = { Homepage } />
         <Route path = '/anime/:slug' component = { DetailAnime } />
