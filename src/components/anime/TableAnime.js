@@ -1,86 +1,135 @@
-import React from 'react';
-import { Table, Tag, Space } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Table, Tag } from 'antd';
 
-import '../../css/tablesAndLists.css';
+import { compareDates } from '../../services/auxServices';
+import { getListAnime } from '../../api/anime';
 
-const TableList = () => {
+const TableAnime = () => {
 
-    const columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          render: text => <a>{text}</a>,
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-        },
-        {
-          title: 'Tags',
-          key: 'tags',
-          dataIndex: 'tags',
-          render: tags => (
-            <>
-              {tags.map(tag => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
-                }
-                return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                );
-              })}
-            </>
-          ),
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (text, record) => (
-            <Space size="middle">
-              <a>Invite {record.name}</a>
-              <a>Delete</a>
-            </Space>
-          ),
-        },
-      ];
+	const[animeList, setAnimeList] = useState([]);
 
-      const data = [
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-      ];
+	useEffect(() => {
+        async function getAnimeList() {
+			const animeList = await getListAnime();
+			const animeListForTable = animeList.data.map((item) => {
+				return {
+					key: item.id,
+					title: (
+						<b> <a href = { `/anime/${ item.slug }` }> { item.title } </a> </b>
+					),
+					tagsAiring_Start: [item.airing_start],
+					tagsEpisodes: [ item.episodes ],
+					tagsScore: [ item.score ]
+				}
+			});
+			setAnimeList(animeListForTable);
+		}
+		getAnimeList();
+    }, []);
 
-    return (
-        <Table columns={columns} dataSource={data} pagination = {{ defaultPageSize: 1 }} />
-    )
-};
+	const columns = [
+		{
+			title: <b> { 'Title' } </b>,
+			dataIndex: 'title',
+			key: 'title',
+			width: '20%',
+		},
+		{
+			title: <b> { 'Airing Start' } </b>,
+			dataIndex: 'tagsAiring_Start',
+			key: 'tagsAiring_Start',
+			width: '10%',
+			render: tagsAiring_Start => (
+				<>
+					{ tagsAiring_Start.map(airing_start => {
+						
+						let phrase = '';
+						let color = '';
+						const day = new Date().getDate();
+						const month = new Date().getMonth();
+						const year = new Date().getFullYear();
+						const fullDate = year + '-' + month + '-' + day;
+						
+						phrase = compareDates(fullDate, airing_start);
+						
+						if(phrase = 'Already Launched!') {
+							color = 'red'
+						} else if(phrase = 'Not Yet Released!') {
+							color = 'green';
+						} else {
+							color = 'blue';
+						}
 
-export default TableList;
+						return (
+							<Tag color = { color } key = { airing_start } >
+								<b> { airing_start } { phrase } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Episodes' } </b>,
+			dataIndex: 'tagsEpisodes',
+			key: 'tagsEpisodes',
+			width: '10%',
+			render: tagsEpisodes => (
+				<>
+					{ tagsEpisodes.map(episode => {
+						
+						let color = '';
+
+						if (episode === 0 ) {
+							color = 'red';
+						} else {
+							color = 'blue';
+						}
+
+						return (
+							<Tag color = { color } key = { episode } >
+								<b> { episode } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Score' } </b>,
+			dataIndex: 'tagsScore',
+			key: 'tagsScore',
+			width: '10%',
+			render: tagsScore => (
+				<>
+					{ tagsScore.map(tag => {
+						
+						let color = '';
+
+						if (tag >= 0 && tag <= 6.0) {
+							color = 'red';
+						} else if(tag > 6.0 && tag <= 8.0) {
+							color = 'green';
+						} else {
+							color = 'blue';
+						}
+
+						return (
+							<Tag color = { color } key = { tag } >
+								<b> { tag } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+	];
+
+	return (
+		<Table columns = { columns } dataSource = { animeList } 
+			pagination = {{ showSizeChanger: false }} 
+		/>
+	)
+}
+
+export default TableAnime;

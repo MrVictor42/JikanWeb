@@ -20,7 +20,7 @@ const LeftMenu = () => {
 			</SubMenu>
 			<SubMenu key = 'sub1' title = { <span> Lists </span> }>
 				<MenuItemGroup title = 'Anime'>
-					<Menu.Item key = 'animeList'> Anime </Menu.Item>
+					<Menu.Item key = 'animeList'> <a href = '/table_anime'> Anime </a></Menu.Item>
 				</MenuItemGroup>
 				<MenuItemGroup title = 'Manga'>
 					<Menu.Item key = 'Manga'> Manga </Menu.Item>

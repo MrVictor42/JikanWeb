@@ -27,7 +27,7 @@ const Navbar = () => {
 				</div>
 				<Searchbar />
 				<Button className = 'barsMenu' type = 'primary' onClick = { showDrawer }>
-					<span className="barsBtn"></span>
+					<span className = 'barsBtn'></span>
 				</Button>
 				<Drawer
 					title = 'Basic Drawer'
