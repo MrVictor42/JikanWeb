@@ -13,33 +13,26 @@ const Filterbar = () => {
 	const [producers, setProducers] = useState('');
 	const [selectGender, setSelectGender] = useState('');
 	const [selectProducer, setSelectProducer] = useState('');
-	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
         async function syncLists() {
-            setLoading(true);
 			const genders = await getListGender();
 			const producers = await getListProducer();
-			let final_genders = { genders: [] };
-			let final_producers = { producers: [] };
+			const producersForFilter = producers.data.map(function(item) {
+				return {
+					value: item.id,
+					label: item.name
+				}
+			});
+			const gendersForFilter = genders.data.map(function(item) {
+				return {
+					value: item.id,
+					label: item.name
+				}
+			});
 
-			for(let aux = 0; aux < genders.data.length; aux ++) {
-				final_genders.genders.push({
-					value: genders.data[aux].name,
-					label: genders.data[aux].name
-				});
-			}
-
-			for(let aux = 0; aux < producers.data.length; aux ++) {
-				final_producers.producers.push({
-					value: producers.data[aux].name,
-					label: producers.data[aux].name
-				});
-			}
-
-			setProducers(final_producers.producers);
-			setGenders(final_genders.genders);
-            setLoading(false);
+			setProducers(producersForFilter);
+			setGenders(gendersForFilter);
         }
 
         syncLists();
@@ -55,7 +48,7 @@ const Filterbar = () => {
 
 	const getFilters = () => {
 		alert(selectGender)
-		alert(producers)
+		alert(selectProducer)
 	}
 
 	const restore = () => {
