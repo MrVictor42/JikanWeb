@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Tag } from 'antd';
+import { Table, Tag, Spin } from 'antd';
 
 import { compareDates } from '../../services/auxServices';
 import { getListAnime } from '../../api/anime';
@@ -7,9 +7,11 @@ import { getListAnime } from '../../api/anime';
 const TableAnime = () => {
 
 	const[animeList, setAnimeList] = useState([]);
+    const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
         async function getAnimeList() {
+			setLoading(true);
 			const animeList = await getListAnime();
 			const animeListForTable = animeList.data.map((item) => {
 				return {
@@ -23,6 +25,7 @@ const TableAnime = () => {
 				}
 			});
 			setAnimeList(animeListForTable);
+			setLoading(false);
 		}
 		getAnimeList();
     }, []);
@@ -126,9 +129,13 @@ const TableAnime = () => {
 	];
 
 	return (
-		<Table columns = { columns } dataSource = { animeList } 
-			pagination = {{ showSizeChanger: false }} 
-		/>
+		loading ? (
+            <Spin tip = 'Loading Table Anime, Wait For ...' className = 'loadingSpin'/>
+        ) : (
+			<Table columns = { columns } dataSource = { animeList } 
+				pagination = {{ showSizeChanger: false }} 
+			/>
+		)
 	)
 }
 

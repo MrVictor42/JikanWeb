@@ -18,6 +18,18 @@
     margin-right: auto	
 }
 
+.sad_gif {
+	width: auto;
+	padding-left: 40%;
+	padding-top: 2%;
+}
+
+.spanNotFound {
+	color: #1890ff;
+	font-size: 25px;
+	padding-left: 40px;
+}
+
 .logo a {
 	display: inline-block;
 	font-size: 20px;
