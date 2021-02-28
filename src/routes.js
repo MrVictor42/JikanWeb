@@ -9,6 +9,7 @@ import TableAnime from './components/anime/TableAnime';
 const BaseRouter = () => (
     <Hoc>
         <Route exact path = '/' component = { Homepage } />
+        <Route exact path = '/list_anime' component = { Homepage } />
         <Route path = '/anime/:slug' component = { DetailAnime } />
         <Route path = '/table_anime' component = { TableAnime } />
     </Hoc>

@@ -24,6 +24,12 @@
 	padding-top: 2%;
 }
 
+.img_list {
+	height: auto;
+	width: auto;
+	border-radius: 20px;
+}
+
 .spanNotFound {
 	color: #1890ff;
 	font-size: 25px;

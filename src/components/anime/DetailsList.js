@@ -22,7 +22,7 @@ const DetailsLists = (props) => {
                     <Card style = {{ width: 'auto', marginTop: 20, paddingLeft: 20, paddingRight: 20 }}>
                         <Meta
                             avatar = {
-                                <Image width = {'auto'} src = { props.item.image_url } />
+                                <Image className = 'img_list' src = { props.item.image_url } />
                             }
                             title = { <b> { props.item.title } </b> }
                             description = {

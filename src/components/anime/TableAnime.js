@@ -132,7 +132,8 @@ const TableAnime = () => {
 		loading ? (
             <Spin tip = 'Loading Table Anime, Wait For ...' className = 'loadingSpin'/>
         ) : (
-			<Table columns = { columns } dataSource = { animeList } 
+			<Table 
+				columns = { columns } dataSource = { animeList } 
 				pagination = {{ showSizeChanger: false }} 
 			/>
 		)

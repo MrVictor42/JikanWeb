@@ -14,8 +14,6 @@ const ListAnime = (props) => {
         setAnimeList(props.list);
     });
 
-    console.log(props)
-
     return (
         animeList === undefined ? (
             <>
@@ -33,27 +31,25 @@ const ListAnime = (props) => {
                     pagination = {{ 
                         position: 'both', showSizeChanger: false }
                     } 
-                    grid = {{ column: 2 }}
+                    grid = {{ column: 5 }}
                     dataSource = { animeList } 
                     style = {{ 
                         margin: 'auto', width: 'auto', paddingLeft: '30px', 
                         paddingRight: '35px' 
                     }}
                     renderItem = { item => (
-                        <List.Item 
-                            key = { item.title }
-                        >
+                        <List.Item key = { item.title }>
+                            <List.Item.Meta style = {{ paddingTop: '20px' }} />
                             <List.Item.Meta
-                                style = {{ paddingTop: '20px' }}
-                                title= { 
+                                avatar = { 
                                     <a href = { `/anime/${ item.slug }` }> 
-                                        { <b> { item.title } </b> } 
+                                    { 
+                                        <Image className = 'img_list' src = { item.image_url } 
+                                            preview = { false } 
+                                        /> 
+                                    } 
                                     </a> 
                                 }
-                            />
-                            <List.Item.Meta
-                                avatar = { <Image width = { 'auto' } src = { item.image_url } /> }
-                                description = { <DetailsLists item = { item } visible = { false }/> }
                             />
                         </List.Item>
                     )}

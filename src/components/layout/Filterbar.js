@@ -82,14 +82,14 @@ const Filterbar = () => {
 				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', paddingLeft: '30%' }}
 				onFinish = { onFinish }
 			>
-				<Form.Item label = { <b> Genres </b> } name = { 'gender' }>
+				<Form.Item label = { <b style = {{ color: '#1890ff' }}> Genres </b> } name = { 'gender' }>
 					<Cascader
 						placeholder = { '' } 
 						options = { genders } 
 						style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
-				<Form.Item label = { <b> Producers </b> } name = { 'producer' }>
+				<Form.Item label = { <b style = {{ color: '#1890ff' }}> Producers </b> } name = { 'producer' }>
 					<Cascader
 						placeholder = { '' } 
 						options = { producers }  
@@ -97,11 +97,16 @@ const Filterbar = () => {
 					/>
 				</Form.Item>
 				<Form.Item>
-					<Button block htmlType = 'submit' > Apply </Button>
+					<Button 
+						block htmlType = 'submit' style = {{ color: '#1890ff',background: 'black' }}> 
+						<b> Apply </b> 
+					</Button>
 				</Form.Item>
 				<Form.Item>
-					<Button block onClick={() => { { form.resetFields()}; restoreList() }}> 
-						Restore 
+					<Button 
+						block style = {{ color: '#1890ff',background: 'black' }} 
+						onClick={() => { { form.resetFields()}; restoreList() }}> 
+						<b> Restore </b> 
 					</Button>
 				</Form.Item>
 			</Form>

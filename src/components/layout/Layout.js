@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 const { Content } = Layout;
 const CustomLayout = (props) => {
     return(
-        <Layout style = {{ backgroundColor: 'white' }}>
+        <Layout style = {{ backgroundColor: 'black' }}>
             <Navbar isLogged = { props.token }/>
             <Content>
 				{ props.children }
