@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { List, Image, Spin } from 'antd';
 
-import DetailsLists from './DetailsList';
 import notFound from '../../images/naruto_sad.gif';
 
 const ListAnime = (props) => {

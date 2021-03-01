@@ -2,14 +2,14 @@ import axios from 'axios';
 
 import baseURL from './jikanService';
 
-export const getListProducer = async() => {
+export const getListManga = async() => {
 
     axios.defaults.headers = {
 		'Content-Type': 'application/json',
     }
 
     try {
-        return await baseURL.get('producer/list');
+        return await baseURL.get('manga/list');
     } catch {
         return false;
     }

@@ -9,7 +9,7 @@ export const getListGender = async() => {
     }
 
     try {
-        return await baseURL.get("gender/list");;
+        return await baseURL.get('gender/list');
     } catch {
         return false;
     }

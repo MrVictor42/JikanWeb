@@ -79,17 +79,21 @@ const Filterbar = () => {
 		<>
 			<Form 
 				layout = { formLayout } form = { form } initialValues = {{ layout: formLayout }}
-				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', paddingLeft: '30%' }}
+				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', height: '100%', paddingLeft: '30%' }}
 				onFinish = { onFinish }
 			>
-				<Form.Item label = { <b style = {{ color: '#1890ff' }}> Genres </b> } name = { 'gender' }>
+				<Form.Item 
+					label = { <b style = {{ color: '#1890ff' }}> Genres </b> } name = { 'gender' }
+				>
 					<Cascader
 						placeholder = { '' } 
 						options = { genders } 
 						style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
-				<Form.Item label = { <b style = {{ color: '#1890ff' }}> Producers </b> } name = { 'producer' }>
+				<Form.Item 
+					label = {<b style = {{ color: '#1890ff' }}> Producers </b> } name = { 'producer' }
+				>
 					<Cascader
 						placeholder = { '' } 
 						options = { producers }  
