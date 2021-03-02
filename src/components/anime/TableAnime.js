@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Tag, Spin } from 'antd';
 
-import { compareDates } from '../../services/auxServices';
 import { getListAnime } from '../../api/anime';
 
 const TableAnime = () => {
@@ -10,25 +9,26 @@ const TableAnime = () => {
     const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-        async function getAnimeList() {
-			setLoading(true);
-			const animeList = await getListAnime();
-			const animeListForTable = animeList.data.map((item) => {
-				return {
-					key: item.id,
-					title: (
-						<b> <a href = { `/anime/${ item.slug }` }> { item.title } </a> </b>
-					),
-					tagsAiring_Start: [item.airing_start],
-					tagsEpisodes: [ item.episodes ],
-					tagsScore: [ item.score ]
-				}
-			});
-			setAnimeList(animeListForTable);
-			setLoading(false);
-		}
 		getAnimeList();
     }, []);
+
+	async function getAnimeList() {
+		setLoading(true);
+		const animeList = await getListAnime();
+		const animeListForTable = animeList.data.map((item) => {
+			return {
+				key: item.id,
+				title: (
+					<b> <a href = { `/anime/${ item.slug }` }> { item.title } </a> </b>
+				),
+				tagsAiring_Start: [item.airing_start],
+				tagsEpisodes: [ item.episodes ],
+				tagsScore: [ item.score ]
+			}
+		});
+		setAnimeList(animeListForTable);
+		setLoading(false);
+	}
 
 	const columns = [
 		{
@@ -46,26 +46,17 @@ const TableAnime = () => {
 				<>
 					{ tagsAiring_Start.map(airing_start => {
 						
-						let phrase = '';
 						let color = '';
-						const day = new Date().getDate();
-						const month = new Date().getMonth();
-						const year = new Date().getFullYear();
-						const fullDate = year + '-' + month + '-' + day;
-						
-						phrase = compareDates(fullDate, airing_start);
-						
-						if(phrase = 'Already Launched!') {
-							color = 'red'
-						} else if(phrase = 'Not Yet Released!') {
-							color = 'green';
+
+						if(airing_start === 'Undefined') {
+							color = 'red';
 						} else {
-							color = 'blue';
+							color = 'green';
 						}
 
 						return (
 							<Tag color = { color } key = { airing_start } >
-								<b> { airing_start } { phrase } </b> 
+								<b> { airing_start } </b> 
 							</Tag>
 						);
 					})}
@@ -138,6 +129,6 @@ const TableAnime = () => {
 			/>
 		)
 	)
-}
+};
 
 export default TableAnime;

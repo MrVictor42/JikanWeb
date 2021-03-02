@@ -3,7 +3,7 @@ import { Image, Card } from 'antd';
 
 const { Meta } = Card;
 
-const DetailsLists = (props) => {
+const DetailListsAnime = (props) => {
 
     const genders = props.item.genders.map(function(item) {
         if(item.name === null) {
@@ -54,4 +54,4 @@ const DetailsLists = (props) => {
     );
 }
 
-export default DetailsLists;
+export default DetailListsAnime;

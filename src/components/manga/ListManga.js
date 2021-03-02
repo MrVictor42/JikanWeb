@@ -41,7 +41,7 @@ const ListManga = () => {
                         <List.Item.Meta style = {{ paddingTop: '20px' }} />
                         <List.Item.Meta
                             avatar = { 
-                                <a href = { `/anime/${ item.slug }` }> 
+                                <a href = { `/manga/${ item.slug }` }> 
                                 { 
                                     <Image className = 'img_list' src = { item.image_url } 
                                         preview = { false } 
