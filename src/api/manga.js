@@ -14,3 +14,16 @@ export const getListManga = async() => {
         return false;
     }
 };
+
+export const getManga = async(slug) => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get(`manga/${ slug }`);
+    } catch {
+        return false;
+    }
+};
