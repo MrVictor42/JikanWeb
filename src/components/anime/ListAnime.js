@@ -28,9 +28,9 @@ const ListAnime = (props) => {
                 <List
                     itemLayout = 'vertical' size = 'small'
                     pagination = {{ 
-                        position: 'both', showSizeChanger: false }
+                        position: 'both', showSizeChanger: false, pageSize: 4 }
                     } 
-                    grid = {{ column: 5 }}
+                    grid = {{ column: 4 }}
                     dataSource = { animeList } 
                     style = {{ 
                         margin: 'auto', width: 'auto', paddingLeft: '30px', 

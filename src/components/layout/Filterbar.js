@@ -19,32 +19,33 @@ const Filterbar = () => {
     const [animeList, setAnimeList] = useState([]);
 
 	useEffect(() => {
-        async function syncLists() {
-			setLoading(true);
-			const genders = await getListGender();
-			const producers = await getListProducer();
-			const anime = await getListAnime();
-			const producersForFilter = producers.data.map(function(item) {
-				return {
-					value: item.id,
-					label: item.name
-				}
-			});
-			const gendersForFilter = genders.data.map(function(item) {
-				return {
-					value: item.id,
-					label: item.name
-				}
-			});
-
-			setAnimeList(anime.data);
-			setProducers(producersForFilter);
-			setGenders(gendersForFilter);
-			setLoading(false);
-        }
-
         syncLists();
     }, []);
+
+	async function syncLists() {
+		
+		setLoading(true);
+		const genders = await getListGender();
+		const producers = await getListProducer();
+		const anime = await getListAnime();
+		const producersForFilter = producers.data.map(function(item) {
+			return {
+				value: item.id,
+				label: item.name
+			}
+		});
+		const gendersForFilter = genders.data.map(function(item) {
+			return {
+				value: item.id,
+				label: item.name
+			}
+		});
+
+		setAnimeList(anime.data);
+		setProducers(producersForFilter);
+		setGenders(gendersForFilter);
+		setLoading(false);
+	}
 
 	const onFinish = async (values) => {
 
@@ -79,7 +80,7 @@ const Filterbar = () => {
 		<>
 			<Form 
 				layout = { formLayout } form = { form } initialValues = {{ layout: formLayout }}
-				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', height: '100%', paddingLeft: '30%' }}
+				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', height: '100%', paddingLeft: '3%' }}
 				onFinish = { onFinish }
 			>
 				<Form.Item 
