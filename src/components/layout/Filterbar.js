@@ -84,11 +84,15 @@ const Filterbar = () => {
 		<>
 			<Form 
 				layout = { formLayout } form = { form } initialValues = {{ layout: formLayout }}
-				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', height: '100%', paddingLeft: '3%' }}
+				style = {{ paddingTop: '20px', margin: 'auto', width: 'auto', height: '100%', paddingLeft: '3%', textTransform: 'uppercase' }}
 				onFinish = { onFinish }
 			>
 				<Form.Item 
-					label = { <b style = {{ color: '#1890ff' }}> Genres </b> } name = { 'gender' }
+					label = { 
+						<b style = {{ color: '#1890ff', textTransform: 'uppercase' }}> 
+							Genres 
+						</b> } 
+					name = { 'gender' }
 				>
 					<Cascader
 						placeholder = { '' } 
@@ -97,7 +101,11 @@ const Filterbar = () => {
 					/>
 				</Form.Item>
 				<Form.Item 
-					label = {<b style = {{ color: '#1890ff' }}> Producers </b> } name = { 'producer' }
+					label = {
+						<b style = {{ color: '#1890ff', textTransform: 'uppercase' }}> 
+							Producers 
+						</b> } 
+					name = { 'producer' }
 				>
 					<Cascader
 						placeholder = { '' } 
@@ -107,13 +115,14 @@ const Filterbar = () => {
 				</Form.Item>
 				<Form.Item>
 					<Button 
-						block htmlType = 'submit' style = {{ color: '#1890ff',background: 'black' }}> 
+						block htmlType = 'submit' style = {{ color: '#1890ff',background: 'black', textTransform: 'uppercase' }}> 
 						<b> Apply </b> 
 					</Button>
 				</Form.Item>
 				<Form.Item>
 					<Button 
-						block style = {{ color: '#1890ff',background: 'black' }} 
+						block style = {{ color: '#1890ff',background: 'black', 
+						textTransform: 'uppercase' }} 
 						onClick={() => { { form.resetFields()}; restoreList() }}> 
 						<b> Restore </b> 
 					</Button>

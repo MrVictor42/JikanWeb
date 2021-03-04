@@ -47,7 +47,7 @@
 	'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
 	'Noto Color Emoji';
     font-weight: bold;
-	text-transform: capitalize;
+	text-transform: uppercase;
 }
 
 .menuCon {
@@ -58,6 +58,7 @@
 	'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
 	'Noto Color Emoji';
 	float: left;
+	text-transform: uppercase;
 }
 
 .menuCon .ant-menu-item {
@@ -138,6 +139,10 @@
 
 .ant-drawer-body .ant-menu-horizontal>.ant-menu-item:hover {
   	border-bottom-color: transparent;
+}
+
+div {
+    display: block;
 }
 
 @media (max-width: 767px) {
