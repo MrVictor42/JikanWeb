@@ -27,7 +27,7 @@ const DetailManga = (props) => {
                 loading === true ? (
                     <Skeleton />
                 ) : (
-                    <DetailListManga item = { manga } />
+                    <DetailListManga manga = { manga } />
                 )
             }
         </>

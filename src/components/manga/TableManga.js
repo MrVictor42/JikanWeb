@@ -15,16 +15,19 @@ const TableManga = () => {
 	async function getMangaList() {
 		setLoading(true);
 		const mangaList = await getListManga();
-        const mangaListForTable = mangaList.data.map((item) => {
+        const mangaListForTable = mangaList.data.map((manga) => {
 			return {
-				key: item.id,
+				key: manga.id,
 				title: (
-					<b> <a href = { `/manga/${ item.slug }` }> { item.title } </a> </b>
+					<b> <a href = { `/manga/${ manga.slug }` }> { manga.title } </a> </b>
 				),
-                tagsStartDate: [ item.start_date ],
-                tagsVolume: [ item.volumes ],
-                tagsEndDate: [ item.end_date ],
-				tagsScore: [ item.score ]
+                tagsStartDate: [ manga.start_date ],
+				tagsStatus: [ manga.status ],
+				tagsType: [ manga.type ],
+				tagsChapter: [ manga.chapter],
+                tagsVolume: [ manga.volumes ],
+                tagsEndDate: [ manga.end_date ],
+				tagsScore: [ manga.score ]
 			}
 		});
 		setMangaList(mangaListForTable);
@@ -36,7 +39,7 @@ const TableManga = () => {
 			title: <b> { 'Title' } </b>,
 			dataIndex: 'title',
 			key: 'title',
-			width: '20%',
+			width: '10%',
 		},
 		{
 			title: <b> { 'Start Date' } </b>,
@@ -84,6 +87,72 @@ const TableManga = () => {
 						return (
 							<Tag color = { color } key = { end_date } >
 								<b> { end_date } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Status' } </b>,
+			dataIndex: 'tagsStatus',
+			key: 'tagsStatus',
+			width: '10%',
+			render: tagsStatus => (
+				<>
+					{ tagsStatus.map(status => {
+						
+						const color = 'green';
+
+						return (
+							<Tag color = { color } key = { status } >
+								<b> { status } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Type' } </b>,
+			dataIndex: 'tagsType',
+			key: 'tagsType',
+			width: '10%',
+			render: tagsType => (
+				<>
+					{ tagsType.map(type => {
+						
+						const color = 'green';
+
+						return (
+							<Tag color = { color } key = { type } >
+								<b> { type } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Chapters' } </b>,
+			dataIndex: 'tagsChapter',
+			key: 'tagsChapter',
+			width: '10%',
+			render: tagsChapter => (
+				<>
+					{ tagsChapter.map(chapter => {
+						
+						let color = '';
+
+						if(chapter == 0) {
+							color = 'red';
+						} else {
+							color = 'blue';
+						}
+
+						return (
+							<Tag color = { color } key = { chapter } >
+								<b> { chapter } </b> 
 							</Tag>
 						);
 					})}

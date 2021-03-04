@@ -28,19 +28,6 @@ export const getAnime = async(slug) => {
     }
 };
 
-export const getVideosAnime = async(mal_id) => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await axios.get(`https://api.jikan.moe/v3/anime/${ mal_id }`);
-    } catch {
-        return false;
-    }
-}
-
 export const getListAnimeByGender = async(gender_id) => {
 
     axios.defaults.headers = {

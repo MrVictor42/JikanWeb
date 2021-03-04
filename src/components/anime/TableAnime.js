@@ -15,15 +15,17 @@ const TableAnime = () => {
 	async function getAnimeList() {
 		setLoading(true);
 		const animeList = await getListAnime();
-		const animeListForTable = animeList.data.map((item) => {
+		const animeListForTable = animeList.data.map((anime) => {
 			return {
-				key: item.id,
+				key: anime.id,
 				title: (
-					<b> <a href = { `/anime/${ item.slug }` }> { item.title } </a> </b>
+					<b> <a href = { `/anime/${ anime.slug }` }> { anime.title } </a> </b>
 				),
-				tagsAiring_Start: [item.airing_start],
-				tagsEpisodes: [ item.episodes ],
-				tagsScore: [ item.score ]
+				tagsKids: [ anime.kids ],
+				tagsContinuing: [ anime.continuing],
+				tagsAiring_Start: [ anime.airing_start ],
+				tagsEpisodes: [ anime.episodes ],
+				tagsScore: [ anime.score ]
 			}
 		});
 		setAnimeList(animeListForTable);
@@ -35,7 +37,7 @@ const TableAnime = () => {
 			title: <b> { 'Title' } </b>,
 			dataIndex: 'title',
 			key: 'title',
-			width: '20%',
+			width: '15%',
 		},
 		{
 			title: <b> { 'Airing Start' } </b>,
@@ -111,6 +113,64 @@ const TableAnime = () => {
 						return (
 							<Tag color = { color } key = { tag } >
 								<b> { tag } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Kids' } </b>,
+			dataIndex: 'tagsKids',
+			key: 'tagsKids',
+			width: '10%',
+			render: tagsKids => (
+				<>
+					{ tagsKids.map(kids => {
+						
+						let color = '';
+
+						if (kids == false) {
+
+							kids = 'No';
+							color = 'red';
+						} else {
+							kids = 'Yes';
+							color = 'blue';
+						}
+
+						return (
+							<Tag color = { color } key = { kids } >
+								<b> { kids } </b> 
+							</Tag>
+						);
+					})}
+				</>
+			)
+		},
+		{
+			title: <b> { 'Continuing' } </b>,
+			dataIndex: 'tagsContinuing',
+			key: 'tagsContinuing',
+			width: '10%',
+			render: tagsContinuing => (
+				<>
+					{ tagsContinuing.map(continuing => {
+						
+						let color = '';
+
+						if (continuing == false) {
+
+							continuing = 'No';
+							color = 'red';
+						} else {
+							continuing = 'Yes';
+							color = 'blue';
+						}
+
+						return (
+							<Tag color = { color } key = { continuing } >
+								<b> { continuing } </b> 
 							</Tag>
 						);
 					})}
