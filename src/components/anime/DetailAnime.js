@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Skeleton } from 'antd';
 
 import { getAnime } from '../../api/anime';
-import DetailsListAnime from './DetailListsAnime';
+import DetailListAnime from './DetailListAnime';
 
 const DetailAnime = (props) => {
 
@@ -27,7 +27,7 @@ const DetailAnime = (props) => {
                 loading === true ? (
                     <Skeleton />
                 ) : (
-                    <DetailsListAnime anime = { anime } />
+                    <DetailListAnime anime = { anime } />
                 )
             }
         </>

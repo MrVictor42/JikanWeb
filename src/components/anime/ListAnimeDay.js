@@ -18,7 +18,7 @@ const ListAnimeDay = (props) => {
 		setLoading(true);
         const day = dayOfWeek();
 		const anime = await getListAnimeDay(day);
-        
+
         switch(day) {
             case 'sunday':
                 setAnimeList(anime.data.sunday);
@@ -73,14 +73,15 @@ const ListAnimeDay = (props) => {
                                 margin: 'auto', width: 'auto', paddingLeft: '30px', 
                                 paddingRight: '35px' 
                             }}
-                            renderItem = { item => (
-                                <List.Item key = { item.title }>
+                            renderItem = { anime => (
+                                <List.Item key = { anime.title }>
                                     <List.Item.Meta style = {{ paddingTop: '20px' }} />
                                     <List.Item.Meta
                                         avatar = { 
-                                            <a href = { `/anime/${ item.slug }` }> 
+                                            <a href = { `/anime_day/${ anime.mal_id }` }> 
                                             { 
-                                                <Image className = 'img_list' src = { item.image_url } 
+                                                <Image 
+                                                    className = 'img_list' src = { anime.image_url } 
                                                     preview = { false } 
                                                 /> 
                                             } 

@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 
 import Homepage from './components/homepage/Homepage';
 import DetailAnime from './components/anime/DetailAnime';
+import DetailAnimeDay from './components/anime/DetailListAnimeDay';
 import DetailManga from './components/manga/DetailManga';
 import TableAnime from './components/anime/TableAnime';
 import TableManga from './components/manga/TableManga';
@@ -14,6 +15,7 @@ const BaseRouter = () => (
         <Route exact path = '/list_anime' component = { Homepage } />
         <Route exact path = '/list_manga' component = { ListManga } />
         <Route path = '/anime/:slug' component = { DetailAnime } />
+        <Route path = '/anime_day/:mal_id' component = { DetailAnimeDay } />
         <Route path = '/manga/:slug' component = { DetailManga } />
         <Route path = '/table_anime' component = { TableAnime } />
         <Route path = '/table_manga' component = { TableManga } />
