@@ -8,6 +8,7 @@ import {
 } from '../../api/anime';
 
 import ListAnime from '../anime/ListAnime';
+import ListAnimeDay from '../anime/ListAnimeDay';
 
 const Filterbar = () => {
 
@@ -17,6 +18,7 @@ const Filterbar = () => {
 	const [producers, setProducers] = useState('');
 	const [loading, setLoading] = useState(true);
     const [animeList, setAnimeList] = useState([]);
+    const [visible, setVisible] = useState(true);
 
 	useEffect(() => {
         syncLists();
@@ -53,6 +55,7 @@ const Filterbar = () => {
 		const producer = values.producer;
 
 		setLoading(true);
+		setVisible(false);
 
 		if((gender && producer) !== undefined) {
 			const animeGenderProducer = await getListAnimeByGenderAndProducer(gender, producer);
@@ -74,6 +77,7 @@ const Filterbar = () => {
 		const anime = await getListAnime();
 		setAnimeList(anime.data);
 		setLoading(false);
+		setVisible(true);
 	}
 
     return(
@@ -115,6 +119,7 @@ const Filterbar = () => {
 					</Button>
 				</Form.Item>
 			</Form>
+			<ListAnimeDay visible = { visible }/>
 			<ListAnime list = { animeList } loading = { loading } />
 		</>
 	);

@@ -79,3 +79,16 @@ export const getListAnimeByGenderAndProducer = async(gender_id, producer_id) => 
         return false;
     }
 };
+
+export const getListAnimeDay = async(day) => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await axios.get(`https://api.jikan.moe/v3/schedule/${ day }`);
+    } catch {
+        return false;
+    }
+}
