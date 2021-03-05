@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { List, Image, Spin } from 'antd';
 
-import { getListManga } from '../../api/manga';
+import { getListTopAnime } from '../../api/anime';
 
-const ListManga = () => {
+const ListTopAnime = () => {
 
     const [loading, setLoading] = useState(true);
-    const [mangaList, setMangaList] = useState([]);
+    const [animeList, setAnimeList] = useState([]);
 
     useEffect(() => {
         syncList();
@@ -14,8 +14,8 @@ const ListManga = () => {
 
     async function syncList() {
         setLoading(true);
-        const manga = await getListManga();
-        setMangaList(manga.data);
+        const anime = await getListTopAnime();
+        setAnimeList(anime.data);
         setLoading(false);
     }
 
@@ -30,7 +30,7 @@ const ListManga = () => {
                 >
                     <div style = {{ display: 'flex', alignItems: 'center' }}>
                         <h2 style = {{ color: '#1890ff', textTransform: 'uppercase', fontSize: '18px', fontWeight: 700, letterSpacing: '1.2px', marginLeft: '40px' }}> 
-                            Manga List  
+                            Top List Anime  
                         </h2>
                         <div style = {{ flex: 1, borderBottom: '1px solid #9e9e9e', marginLeft: '12px', borderRadius: '8px', marginRight: '35px' }}></div>
                     </div>
@@ -41,19 +41,19 @@ const ListManga = () => {
                         position: 'both', showSizeChanger: false }
                     } 
                     grid = {{ column: 5 }}
-                    dataSource = { mangaList } 
+                    dataSource = { animeList } 
                     style = {{ 
                         margin: 'auto', width: 'auto', paddingLeft: '30px', 
                         paddingRight: '35px' 
                     }}
-                    renderItem = { item => (
-                        <List.Item key = { item.title }>
+                    renderItem = { anime => (
+                        <List.Item key = { anime.title }>
                             <List.Item.Meta style = {{ paddingTop: '20px' }} />
                             <List.Item.Meta
                                 avatar = { 
-                                    <a href = { `/manga/${ item.slug }` }> 
+                                    <a href = { `/top/${ anime.slug }` }> 
                                     { 
-                                        <Image className = 'img_list' src = { item.image_url } 
+                                        <Image className = 'img_list' src = { anime.image_url } 
                                             preview = { false } 
                                         /> 
                                     } 
@@ -68,4 +68,4 @@ const ListManga = () => {
     )
 };
 
-export default ListManga;
+export default ListTopAnime;

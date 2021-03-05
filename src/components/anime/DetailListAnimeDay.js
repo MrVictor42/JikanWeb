@@ -18,31 +18,10 @@ const DetailListAnimeDay = (props) => {
     async function getAnimeDayDetail() {
 		setLoading(true);
         const anime = await getAnimeDay(props.match.params.mal_id);
-        // const animeResult = anime.data.map(function(anime) {
-        //     return {
-        //         key: anime.id,
-        //         image_url: anime.image_url,
-        //         title: anime.title,
-        //         synopsis: anime.synopsis,
-        //         score: anime.score,
-        //         episodes: anime.episodes,
-        //         status: anime.status,
-        //         airing_start: anime.airing_start
-        //     }
-        // });
         setAnime(anime.data);
         setLoading(false);
     }
 
-    const genres = anime.genres.map(function(gender) {
-        if(gender.name === null) {
-            return '';
-        } else {
-            return gender.name + " | ";
-        }
-    });
-
-    console.log(anime.genres)
     return (
         loading ? (
             <Spin tip = 'Loading Anime, Wait For ...' className = 'loadingSpin'/>
@@ -62,9 +41,6 @@ const DetailListAnimeDay = (props) => {
                                         </p>
                                         <p style = {{ fontSize: '16px' }}> 
                                             <b> Score: </b> { anime.score } 
-                                        </p>
-                                        <p style = {{ fontSize: '16px' }}>
-                                            <b> Genres: </b> { genres }
                                         </p>
                                         <p style = {{ fontSize: '16px' }}> 
                                         <b> Episodes: </b> { anime.episodes }

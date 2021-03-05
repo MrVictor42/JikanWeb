@@ -14,7 +14,6 @@ const DetailAnime = (props) => {
     }, []);
 
     async function getSelectedAnime() {
-        
         setLoading(true);
         const selectedAnime = await getAnime(props.match.params.slug);
         setAnime(selectedAnime.data);

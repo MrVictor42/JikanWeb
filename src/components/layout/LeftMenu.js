@@ -27,7 +27,7 @@ const LeftMenu = () => {
 				</MenuItemGroup>
 			</SubMenu>
 			<Menu.Item key = 'top10'>
-				<a href = '/' style = {{ fontSize: '16px', color: '#1890ff' }}> Top10! </a>
+				<a href = '/top_anime' style = {{ fontSize: '16px', color: '#1890ff' }}> Top10! </a>
 			</Menu.Item>
 			<Menu.Item key = 'contact'>
 				<a href = '/' style = {{ fontSize: '16px', color: '#1890ff' }}>Contact Us</a>

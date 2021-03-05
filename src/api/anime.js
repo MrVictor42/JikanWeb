@@ -15,6 +15,32 @@ export const getListAnime = async() => {
     }
 };
 
+export const getListTopAnime = async() => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get('topAnime/list');
+    } catch {
+        return false;
+    }
+};
+
+export const getTopAnime = async(slug) => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get(`topAnime/${ slug }`);
+    } catch {
+        return false;
+    }
+};
+
 export const getAnime = async(slug) => {
 
     axios.defaults.headers = {
