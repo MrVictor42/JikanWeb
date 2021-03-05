@@ -4,6 +4,8 @@ import { List, Image } from 'antd';
 import { getListAnimeDay } from '../../api/anime';
 import { dayOfWeek } from '../../services/auxServices';
 
+import DetailAnimeDay from './modals/DetailAnimeDay';
+
 const ListAnimeDay = (props) => {
 
     const [loading, setLoading] = useState(true);
@@ -74,20 +76,21 @@ const ListAnimeDay = (props) => {
                                 paddingRight: '35px' 
                             }}
                             renderItem = { anime => (
-                                <List.Item key = { anime.title }>
+                                <List.Item 
+                                    key = { anime.id } 
+                                    actions = {[ <DetailAnimeDay anime = { anime }/> ]}
+                                >
                                     <List.Item.Meta style = {{ paddingTop: '20px' }} />
-                                    <List.Item.Meta
-                                        avatar = { 
-                                            <a href = { `/anime_day/${ anime.mal_id }` }> 
-                                            { 
+                                    {/* <List.Item.Meta
+                                        avatar = {
+                                            <a onClick = { showDrawer }>
                                                 <Image 
                                                     className = 'img_list' src = { anime.image_url } 
                                                     preview = { false } 
                                                 /> 
-                                            } 
                                             </a> 
                                         }
-                                    />
+                                    /> */}
                                 </List.Item>
                             )}
                         />

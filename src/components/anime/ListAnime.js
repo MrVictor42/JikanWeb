@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Image, Spin } from 'antd';
+import { List, Image, Spin, Divider } from 'antd';
 
 import notFound from '../../images/naruto_sad.gif';
 
@@ -65,6 +65,7 @@ const ListAnime = (props) => {
                             </List.Item>
                         )}
                     />
+                    <Divider />
                 </>
             )
         )
