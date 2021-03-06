@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, Image, Col, Row } from 'antd';
 
-const DetailAnimeDay = (props) => {
+const DetailTopAnime = (props) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -35,16 +35,10 @@ const DetailAnimeDay = (props) => {
                     <Col span = { 12 } 
                         style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}>
                         <p> <b> Title: </b> { props.anime.title } </p>
-                        <p> <b> Synopsis: </b> { props.anime.synopsis } </p>
+                        <p> <b> Start_Date: </b> { props.anime.start_date } </p>
+                        <p> <b> End_Date: </b> { props.anime.end_date } </p>
                         <p> <b> Score: </b> { props.anime.score } </p>
                         <p> <b> Episodes: </b> { props.anime.episodes } </p>
-                        <p> <b> Genres: </b> 
-                            { props.anime.genres.map(function(gender) {
-                                return (
-                                    <span> { gender.name } | </span>
-                                )
-                            })}
-                        </p>
                     </Col>
                 </Row>
             </Drawer> 
@@ -52,4 +46,4 @@ const DetailAnimeDay = (props) => {
     )
 };
 
-export default DetailAnimeDay;
+export default DetailTopAnime;

@@ -57,58 +57,28 @@ const DetailAnimeList = (props) => {
                 
                 <Row gutter = { 16 }>
                     <Col span = { 12 } 
-                        style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}>
-                        <DescriptionAnime 
-                            title = { <b> Title </b> } content = { props.anime.title } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Synopsis </b> } content = { props.anime.synopsis } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Score </b> } content = { props.anime.score } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Genres </b> } content = { props.anime.genders.map(function(gender) {
+                        style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}
+                    >
+                        <p> <b> Title: </b> { props.anime.title } </p>
+                        <p> <b> Synopsis: </b> { props.anime.synopsis } </p>
+                        <p> <b> Score: </b> { props.anime.score } </p>
+                        <p> <b> Genres: </b> 
+                            { props.anime.genders.map(function(gender) {
                                 return (
                                     <span> { gender.name } | </span>
                                 )
-                            }) } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Episodes </b> } content = { props.anime.episodes } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Status </b> } content = { props.anime.status } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Continuous </b> } content = { continuing } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Kids </b> } content = { kids } 
-                        />
-                        <DescriptionAnime 
-                            title = { <b> Airing Start </b> } content = { props.anime.airing_start } 
-                        />
+                            })}
+                        </p>
+                        <p> <b> Episodes: </b> { props.anime.episodes } </p>
+                        <p> <b> Status: </b> { props.anime.status } </p>
+                        <p> <b> Continuous: </b> { continuing } </p>
+                        <p> <b> Kids: </b> { props.anime.kids } </p>
+                        <p> <b> Airing Start: </b> { props.anime.airing_start } </p>
                     </Col>
                 </Row>
             </Drawer> 
         </>
     )
 };
-
-const DescriptionAnime = ({ title, content }) => (
-    <div
-      	className = 'site-description-item-profile-wrapper'
-      	style = {{ fontSize: 14, lineHeight: '22px', marginBottom: 7 }}
-    >
-		<p 
-			className = 'site-description-item-profile-p' 
-		  	style = {{ marginRight: 8, display: 'inline-block' }}
-      	>
-    		{ title } :
-      	</p>
-      	{ content }
-    </div>
-);
 
 export default DetailAnimeList;

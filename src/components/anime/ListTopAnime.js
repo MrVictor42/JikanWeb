@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { List, Image, Spin } from 'antd';
+import { List, Spin } from 'antd';
 
 import { getListTopAnime } from '../../api/anime';
+import DetailTopAnime from './modals/DetailTopAnime';
 
 const ListTopAnime = () => {
 
@@ -47,19 +48,10 @@ const ListTopAnime = () => {
                         paddingRight: '35px' 
                     }}
                     renderItem = { anime => (
-                        <List.Item key = { anime.title }>
-                            <List.Item.Meta style = {{ paddingTop: '20px' }} />
-                            <List.Item.Meta
-                                avatar = { 
-                                    <a href = { `/top/${ anime.slug }` }> 
-                                    { 
-                                        <Image className = 'img_list' src = { anime.image_url } 
-                                            preview = { false } 
-                                        /> 
-                                    } 
-                                    </a> 
-                                }
-                            />
+                        <List.Item 
+                            key = { anime.id }
+                            actions = {[ <DetailTopAnime anime = { anime }/> ]}
+                        >
                         </List.Item>
                     )}
                 />

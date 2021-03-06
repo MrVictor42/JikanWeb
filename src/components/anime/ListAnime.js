@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Image, Spin, Divider } from 'antd';
+import { List, Spin, Divider } from 'antd';
 
 import DetailAnimeList from './modals/DetailAnimeList';
 import notFound from '../../images/naruto_sad.gif';
