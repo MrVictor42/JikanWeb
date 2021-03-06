@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Image } from 'antd';
+import { List } from 'antd';
 
 import { getListAnimeDay } from '../../api/anime';
 import { dayOfWeek } from '../../services/auxServices';
@@ -80,17 +80,6 @@ const ListAnimeDay = (props) => {
                                     key = { anime.id } 
                                     actions = {[ <DetailAnimeDay anime = { anime }/> ]}
                                 >
-                                    <List.Item.Meta style = {{ paddingTop: '20px' }} />
-                                    {/* <List.Item.Meta
-                                        avatar = {
-                                            <a onClick = { showDrawer }>
-                                                <Image 
-                                                    className = 'img_list' src = { anime.image_url } 
-                                                    preview = { false } 
-                                                /> 
-                                            </a> 
-                                        }
-                                    /> */}
                                 </List.Item>
                             )}
                         />
