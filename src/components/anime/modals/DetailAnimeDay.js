@@ -33,7 +33,7 @@ const DetailAnimeDay = (props) => {
                         style = {{ marginTop: '20px', marginLeft: '20px' }}
                     />
                     <Col span = { 12 } 
-                        style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}>
+                        style = {{ marginTop: '20px', marginLeft: '20px'}}>
                         <p> <b> Title: </b> { props.anime.title } </p>
                         <p> <b> Synopsis: </b> { props.anime.synopsis } </p>
                         <p> <b> Score: </b> { props.anime.score } </p>

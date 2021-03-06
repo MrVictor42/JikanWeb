@@ -16,9 +16,6 @@ const DetailAnimeList = (props) => {
         setVisible(false);
     };
 
-    const continuing = props.anime.continuing ? 'Yes' : 'No';
-    const kids = props.anime.kids ? 'Yes' : 'No';
-
     return (
         <>
             <a onClick = { showDrawer }>

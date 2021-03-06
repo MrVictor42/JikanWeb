@@ -7,6 +7,7 @@ import TableManga from './components/manga/TableManga';
 import DetailAnimeSearch from './components/anime/DetailAnimeSearch';
 import ListManga from './components/manga/ListManga';
 import ListTopAnime from './components/anime/ListTopAnime';
+import Contact from './components/contact/Contact';
 
 const BaseRouter = () => (
     <>
@@ -17,6 +18,7 @@ const BaseRouter = () => (
         <Route path = '/table_anime' component = { TableAnime } />
         <Route path = '/table_manga' component = { TableManga } />
         <Route path = '/anime/:slug' component = { DetailAnimeSearch } />
+        <Route path = '/contact' component = { Contact } />
     </>
 );
 

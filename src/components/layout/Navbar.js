@@ -19,7 +19,7 @@ const Navbar = () => {
 	return(
 		<nav className = 'menuBar'>
 			<div className = 'logo'>
-				<a href="/">MyAn</a>
+				<a href = '/'>MyAn</a>
 			</div>
 			<div className = 'menuCon'>
 				<div className = 'leftMenu'>

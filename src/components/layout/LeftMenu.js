@@ -9,7 +9,9 @@ const { useBreakpoint } = Grid;
 const LeftMenu = () => {
   	const { md } = useBreakpoint();
 	return (
-		<Menu mode = { md ? 'horizontal' : 'inline' } style = {{ fontSize: '16px', color: '#1890ff', background: 'black' }}>
+		<Menu mode = { md ? 'horizontal' : 'inline' } 
+			style = {{ fontSize: '16px', color: '#1890ff', background: 'black' }}
+		>
 			<SubMenu key = 'content' title = { <span> Content </span> }>
 				<MenuItemGroup title = 'Anime'>
 					<Menu.Item key = 'animeContent'> <a href = '/list_anime'> Anime </a> </Menu.Item>
@@ -30,7 +32,7 @@ const LeftMenu = () => {
 				<a href = '/top_anime' style = {{ fontSize: '16px', color: '#1890ff' }}> Top10! </a>
 			</Menu.Item>
 			<Menu.Item key = 'contact'>
-				<a href = '/' style = {{ fontSize: '16px', color: '#1890ff' }}>Contact Us</a>
+				<a href = '/contact' style = {{ fontSize: '16px', color: '#1890ff' }}> Contact </a>
 			</Menu.Item>
 		</Menu>
 	);
