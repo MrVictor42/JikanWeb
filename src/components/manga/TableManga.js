@@ -18,9 +18,7 @@ const TableManga = () => {
         const mangaListForTable = mangaList.data.map((manga) => {
 			return {
 				key: manga.id,
-				title: (
-					<b> <a href = { `/manga/${ manga.slug }` }> { manga.title } </a> </b>
-				),
+				title: <b> { manga.title } </b> ,
                 tagsStartDate: [ manga.start_date ],
 				tagsStatus: [ manga.status ],
 				tagsType: [ manga.type ],

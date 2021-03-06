@@ -18,14 +18,15 @@ const TableAnime = () => {
 		const animeListForTable = animeList.data.map((anime) => {
 			return {
 				key: anime.id,
-				title: (
-					<b> <a href = { `/anime/${ anime.slug }` }> { anime.title } </a> </b>
-				),
+				title: <b> { anime.title } </b>,
 				tagsKids: [ anime.kids ],
 				tagsContinuing: [ anime.continuing],
 				tagsAiring_Start: [ anime.airing_start ],
 				tagsEpisodes: [ anime.episodes ],
-				tagsScore: [ anime.score ]
+				tagsScore: [ anime.score ],
+				trailer: (
+					<a href = { anime.trailer_url }> <b> Link </b> </a>
+				)
 			}
 		});
 		setAnimeList(animeListForTable);
@@ -177,6 +178,12 @@ const TableAnime = () => {
 				</>
 			)
 		},
+		{
+			title: <b> { 'Trailer' } </b>,
+			dataIndex: 'trailer',
+			key: 'trailer',
+			width: '10%',
+		}
 	];
 
 	return (

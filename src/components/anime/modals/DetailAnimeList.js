@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Drawer, Image, Col, Row } from 'antd';
+import { Drawer, Image, Col, Row, Card } from 'antd';
 import ReactPlayer from 'react-player';
+
+const { Meta } = Card;
 
 const DetailAnimeList = (props) => {
 
@@ -30,50 +32,55 @@ const DetailAnimeList = (props) => {
                 width = { 1370 } height = { 'auto' }
                 placement = 'right' closable = { true } onClose = { onClose } visible = { visible }
             >
-                <Row gutter = { 16 }>
+                <Row gutter = { 20 } style = {{ width: 'auto', backgroundColor: 'white' }}>
                     <Col span = { 12 }>
-                        <Image 
-                            className = 'img_list' src = { props.anime.image_url } 
-                            preview = { false } 
-                            style = {{ marginTop: '20px', marginLeft: '30px' }}
-                        />
+                        <Card 
+                            style = {{ 
+                                width: 'auto', marginTop: 20, paddingLeft: 20, paddingRight: 20,
+                                textAlign: 'justify' 
+                            }}
+                            bordered = { false }
+                        >
+                            <Meta
+                                avatar = {
+                                    <Image className = 'img_list' src = { props.anime.image_url } />
+                                }
+                                title = { <b> { props.anime.title } </b> }
+                                description = {
+                                    <>
+                                        <p> <b> Synopsis: </b> { props.anime.synopsis } </p>
+                                        <p> <b> Score: </b> { props.anime.score } </p>
+                                        <p> <b> Genders: </b> { props.anime.genders.map(function(gender){
+                                            return (
+                                                <span key = { gender.id }> { gender.name } | </span>
+                                            )
+                                        }) } </p>
+                                        <p> <b> Episodes: </b> { props.anime.episodes } </p>
+                                        <p> <b> Continuous: </b> 
+                                            { props.anime.continuous ? 'Yes' : 'No' } 
+                                        </p>
+                                        <p> <b> Kids: </b> { props.anime.kids ? 'Yes' : 'No' } </p>
+                                        <p> <b> Airing Start: </b> { props.anime.airing_start } </p>
+                                
+                                    </>
+                                }
+                            />
+                        </Card>
                     </Col>
-                    <Col span = { 12 }>
+                    <Col span = { 8 }>
                         {
                             props.anime.trailer_url !== null ? (
                                 <>
                                     
                                     <ReactPlayer 
                                         url = { props.anime.trailer_url } 
-                                        style = {{ marginLeft: '20px', marginTop: '20px' }}
+                                        style = {{ marginTop: '40px'}}
                                     />
                                 </>
                             ) : (
                                 null
                             )
                         }
-                    </Col>
-                </Row>
-                
-                <Row gutter = { 16 }>
-                    <Col span = { 12 } 
-                        style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}
-                    >
-                        <p> <b> Title: </b> { props.anime.title } </p>
-                        <p> <b> Synopsis: </b> { props.anime.synopsis } </p>
-                        <p> <b> Score: </b> { props.anime.score } </p>
-                        <p> <b> Genres: </b> 
-                            { props.anime.genders.map(function(gender) {
-                                return (
-                                    <span> { gender.name } | </span>
-                                )
-                            })}
-                        </p>
-                        <p> <b> Episodes: </b> { props.anime.episodes } </p>
-                        <p> <b> Status: </b> { props.anime.status } </p>
-                        <p> <b> Continuous: </b> { continuing } </p>
-                        <p> <b> Kids: </b> { props.anime.kids } </p>
-                        <p> <b> Airing Start: </b> { props.anime.airing_start } </p>
                     </Col>
                 </Row>
             </Drawer> 

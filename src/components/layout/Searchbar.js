@@ -10,29 +10,28 @@ const Searchbar = () => {
     const[animeList, setAnimeList] = useState([]);
     
     useEffect(() => {
-        async function getAnimeList() {
-            const anime = await getListAnime();
-            const animeForSearch = anime.data.map(function(item) {
-                return {
-                    key: item.id,
-                    value: item.title,
-                    label: (
-                        <div>
-                            <Avatar 
-                                shape = 'square' size = { 64 } 
-                                icon = { <Image  src = { item.image_url } />}
-                            />
-                            <a href = { `/anime/${ item.slug }` }> <b> { item.title } </b> </a>
-
-                        </div>
-                    )
-                };
-            });
-            setAnimeList(animeForSearch);
-        }
-
         getAnimeList();
     }, []);
+
+    async function getAnimeList() {
+        const anime = await getListAnime();
+        const animeForSearch = anime.data.map(function(anime) {
+            return {
+                key: anime.id,
+                value: anime.title,
+                label: (
+                    <>
+                        <Avatar 
+                            shape = 'square' size = { 64 } 
+                            icon = { <Image  src = { anime.image_url } />}
+                        />
+                        <a href = { `/anime/${ anime.slug }` }> <b> { anime.title } </b> </a>
+                    </>
+                )
+            };
+        });
+        setAnimeList(animeForSearch);
+    }
 
     return (
         <AutoComplete

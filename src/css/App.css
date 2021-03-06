@@ -65,6 +65,12 @@ p {
 	font-size: 16px;
 }
 
+.boxAnimeDetail {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 .menuCon .ant-menu-item {
   	padding: 0px 5px;
 }
