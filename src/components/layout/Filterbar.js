@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Cascader, Form, Button } from 'antd';
+import axios from 'axios';
 
 import { getListGender } from '../../api/gender';
 import { getListProducer } from '../../api/producer';
 import { 
-	getListAnime, getListAnimeByProducer, getListAnimeByGenderAndProducer, getListAnimeByGender 
+	getListAnime, getListAnimeByProducer, getListAnimeByGenderAndProducer, 
+	getListAnimeByGender, getCountDatabase, getListAnimeAfterUpdate 
 } from '../../api/anime';
+import { apiListAnime } from '../../services/consts';
 
 import ListAnime from '../anime/ListAnime';
 import ListAnimeDay from '../anime/ListAnimeDay';
@@ -27,19 +30,28 @@ const Filterbar = () => {
 	async function syncLists() {
 		
 		setLoading(true);
-		const genders = await getListGender();
+		const databaseLength = await getCountDatabase();
+		let anime = null;
+		const apiJikanLength = await axios.get(apiListAnime);
+		if(databaseLength.data === 0 || databaseLength.data != apiJikanLength.data.anime.length) {
+			anime = await getListAnimeAfterUpdate();
+		} else {
+			anime = await getListAnime();
+		}
+
 		const producers = await getListProducer();
-		const anime = await getListAnime();
-		const producersForFilter = producers.data.map(function(item) {
+		const genders = await getListGender();
+
+		const producersForFilter = producers.data.map(function(producer) {
 			return {
-				value: item.id,
-				label: item.name
+				value: producer.id,
+				label: producer.name
 			}
 		});
-		const gendersForFilter = genders.data.map(function(item) {
+		const gendersForFilter = genders.data.map(function(gender) {
 			return {
-				value: item.id,
-				label: item.name
+				value: gender.id,
+				label: gender.name
 			}
 		});
 
@@ -50,7 +62,6 @@ const Filterbar = () => {
 	}
 
 	const onFinish = async (values) => {
-
 		const gender = values.gender;
 		const producer = values.producer;
 
@@ -72,7 +83,6 @@ const Filterbar = () => {
 	};
 
 	const restoreList = async() => {
-		
 		setLoading(true);
 		const anime = await getListAnime();
 		setAnimeList(anime.data);

@@ -9,11 +9,37 @@ export const getListAnime = async() => {
     }
 
     try {
-        return await baseURL.get('anime/list');
+        return await baseURL.get('anime/list/');
     } catch {
         return false;
     }
 };
+
+export const getListAnimeAfterUpdate = async() => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get('anime/list/update');
+    } catch {
+        return false;
+    }
+}
+
+export const getCountDatabase = async() => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        return await baseURL.get('anime/count');
+    } catch {
+        return false;
+    }
+}
 
 export const getListTopAnime = async() => {
 

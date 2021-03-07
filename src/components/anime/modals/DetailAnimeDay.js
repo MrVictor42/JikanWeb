@@ -41,7 +41,7 @@ const DetailAnimeDay = (props) => {
                         <p> <b> Genres: </b> 
                             { props.anime.genres.map(function(gender) {
                                 return (
-                                    <span> { gender.name } | </span>
+                                    <span key = { gender.mal_id }> { gender.name } | </span>
                                 )
                             })}
                         </p>
