@@ -3,10 +3,8 @@ import { Cascader, Form, Button } from 'antd';
 import axios from 'axios';
 
 import { getListGender } from '../../api/gender';
-import { getListProducer } from '../../api/producer';
 import { 
-	getListAnime, getListAnimeByProducer, getListAnimeByGenderAndProducer, 
-	getListAnimeByGender, getCountDatabase, getListAnimeAfterUpdate 
+	getListAnime, getListAnimeByGender, getCountDatabase, getListAnimeAfterUpdate 
 } from '../../api/anime';
 import { apiListAnime } from '../../services/consts';
 
@@ -18,7 +16,6 @@ const Filterbar = () => {
 	const [form] = Form.useForm();
   	const [formLayout] = useState('inline');
 	const [genders, setGenders] = useState('');
-	const [producers, setProducers] = useState('');
 	const [loading, setLoading] = useState(true);
     const [animeList, setAnimeList] = useState([]);
     const [visible, setVisible] = useState(true);
@@ -33,21 +30,14 @@ const Filterbar = () => {
 		const databaseLength = await getCountDatabase();
 		let anime = null;
 		const apiJikanLength = await axios.get(apiListAnime);
+
 		if(databaseLength.data === 0 || databaseLength.data != apiJikanLength.data.anime.length) {
 			anime = await getListAnimeAfterUpdate();
 		} else {
 			anime = await getListAnime();
 		}
 
-		const producers = await getListProducer();
 		const genders = await getListGender();
-
-		const producersForFilter = producers.data.map(function(producer) {
-			return {
-				value: producer.id,
-				label: producer.name
-			}
-		});
 		const gendersForFilter = genders.data.map(function(gender) {
 			return {
 				value: gender.id,
@@ -56,27 +46,22 @@ const Filterbar = () => {
 		});
 
 		setAnimeList(anime.data);
-		setProducers(producersForFilter);
 		setGenders(gendersForFilter);
 		setLoading(false);
 	}
 
 	const onFinish = async (values) => {
 		const gender = values.gender;
-		const producer = values.producer;
 
 		setLoading(true);
 		setVisible(false);
 
-		if((gender && producer) !== undefined) {
-			const animeGenderProducer = await getListAnimeByGenderAndProducer(gender, producer);
-			setAnimeList(animeGenderProducer.data);
-		} else if(gender !== null) {
+		if(gender !== undefined) {
 			const animeGender = await getListAnimeByGender(gender);
 			setAnimeList(animeGender.data);
 		} else {
-			const animeProducer = await getListAnimeByProducer(producer);
-			setAnimeList(animeProducer.data);
+			const anime = await getListAnime();
+			setAnimeList(anime.data);
 		} 
 		
 		setLoading(false);
@@ -107,19 +92,6 @@ const Filterbar = () => {
 					<Cascader
 						placeholder = { '' } 
 						options = { genders } 
-						style = {{ width: '120px' }} 
-					/>
-				</Form.Item>
-				<Form.Item 
-					label = {
-						<b style = {{ color: '#1890ff', textTransform: 'uppercase' }}> 
-							Producers 
-						</b> } 
-					name = { 'producer' }
-				>
-					<Cascader
-						placeholder = { '' } 
-						options = { producers }  
 						style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
