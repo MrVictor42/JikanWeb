@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { List, Spin, Divider } from 'antd';
 
-import DetailAnimeList from './modals/DetailAnimeList';
+import DetailAnime from './modals/DetailAnime';
 import notFound from '../../images/naruto_sad.gif';
 
 const ListAnime = (props) => {
@@ -52,7 +52,7 @@ const ListAnime = (props) => {
                         renderItem = { anime => (
                             <List.Item 
                                 key = { anime.id }
-                                actions = {[ <DetailAnimeList anime = { anime }/> ]}
+                                actions = {[ <DetailAnime anime = { anime }/> ]}
                             >
                             </List.Item>
                         )}

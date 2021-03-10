@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { List, Spin } from 'antd';
 
 import { getListTopAnime } from '../../api/anime';
-import DetailTopAnime from './modals/DetailTopAnime';
+import DetailAnime from './modals/DetailAnime';
 
 const ListTopAnime = () => {
 
@@ -16,7 +16,7 @@ const ListTopAnime = () => {
     async function syncList() {
         setLoading(true);
         const anime = await getListTopAnime();
-        setAnimeList(anime.data);
+        setAnimeList(anime.data.top);
         setLoading(false);
     }
 
@@ -50,7 +50,7 @@ const ListTopAnime = () => {
                     renderItem = { anime => (
                         <List.Item 
                             key = { anime.id }
-                            actions = {[ <DetailTopAnime anime = { anime }/> ]}
+                            actions = {[ <DetailAnime anime = { anime }/> ]}
                         >
                         </List.Item>
                     )}

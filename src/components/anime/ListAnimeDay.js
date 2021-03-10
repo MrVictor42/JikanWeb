@@ -4,7 +4,7 @@ import { List } from 'antd';
 import { getListAnimeDay } from '../../api/anime';
 import { dayOfWeek } from '../../services/auxServices';
 
-import DetailAnimeDay from './modals/DetailAnimeDay';
+import DetailAnime from './modals/DetailAnime';
 
 const ListAnimeDay = (props) => {
 
@@ -78,7 +78,7 @@ const ListAnimeDay = (props) => {
                             renderItem = { anime => (
                                 <List.Item 
                                     key = { anime.id } 
-                                    actions = {[ <DetailAnimeDay anime = { anime }/> ]}
+                                    actions = {[ <DetailAnime anime = { anime }/> ]}
                                 >
                                 </List.Item>
                             )}
