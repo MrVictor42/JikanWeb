@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import baseURL from './jikanService';
+import { currentSeason, currentYear } from '../services/consts';
 
 export const getListAnime = async() => {
 
@@ -9,13 +10,28 @@ export const getListAnime = async() => {
     }
 
     try {
-        return await baseURL.get('anime/list/');
+        const anime = await baseURL.get(`season/${ currentYear }/${ currentSeason }`);
+        return anime.data.anime;
     } catch {
         return false;
     }
 };
 
-export const getListAnimeAfterUpdate = async() => {
+export const getAnimeDetailFromJikan = async(mal_id) => {
+
+    axios.defaults.headers = {
+		'Content-Type': 'application/json',
+    }
+
+    try {
+        const detail = await baseURL.get(`anime/${ mal_id }`);
+        return detail.data;
+    } catch {
+        return false;
+    }
+};
+
+export const getListTopAnime = async() => {
 
     axios.defaults.headers = {
 		'Content-Type': 'application/json',
@@ -27,32 +43,6 @@ export const getListAnimeAfterUpdate = async() => {
         return false;
     }
 }
-
-export const getCountDatabase = async() => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get('anime/count');
-    } catch {
-        return false;
-    }
-}
-
-export const getListTopAnime = async() => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get('topAnime/list');
-    } catch {
-        return false;
-    }
-};
 
 export const getTopAnime = async(slug) => {
 
@@ -75,45 +65,6 @@ export const getAnime = async(slug) => {
 
     try {
         return await baseURL.get(`anime/${ slug }`);
-    } catch {
-        return false;
-    }
-};
-
-export const getListAnimeByGender = async(gender_id) => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get(`anime/filterByGender/${ gender_id[0] }`);
-    } catch {
-        return false;
-    }
-};
-
-export const getListAnimeByProducer = async(producer_id) => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get(`anime/filterByProducer/${ producer_id[0] }`);
-    } catch {
-        return false;
-    }
-};
-
-export const getListAnimeByGenderAndProducer = async(gender_id, producer_id) => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get(`anime/filter/${ gender_id[0] }/${ producer_id[0] }`);
     } catch {
         return false;
     }
