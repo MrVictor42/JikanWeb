@@ -18,7 +18,7 @@ const DetailAnime = (props) => {
 
 	async function getDetailAnime(props) {
         setLoading(true);
-        const detail = await getAnimeDetailFromJikan(props.anime.mal_id);
+        const detail = await getAnimeDetailFromJikan(props.anime_id);
         setAnimeDetail(detail);
         setLoading(false);
     }
@@ -35,7 +35,7 @@ const DetailAnime = (props) => {
         <>
             {
                 loading ? (
-                    <Spin tip = 'Loading Anime List, Wait For ...' className = 'loadingSpin'/>
+                    <Spin className = 'loadingSpin'/>
                 ) : (
                     <>
                         <a onClick = { showDrawer }>
@@ -47,7 +47,7 @@ const DetailAnime = (props) => {
                         <Drawer
                             title = { <b> { `Anime: ${ animeDetail.title }` } </b> } 
                             width = { 1370 } height = { 'auto' }
-                            placement = 'right' closable = { true } onClose = { onClose } visible = { visible }
+                            placement = 'right' closable = { true } onClose = { onClose } visible = { visible } preview = { false }
                         >
                             <Row gutter = { 20 } style = {{ width: 'auto', backgroundColor: 'white' }}>
                                 <Col span = { 12 }>
@@ -103,7 +103,7 @@ const DetailAnime = (props) => {
                                                         { animeDetail.producers.map(function(producer){
                                                             return (
                                                                 <span key = { producer.mal_id }> 
-                                                                    { producer.name } | 
+                                                                    { ' ' + producer.name } |  
                                                                 </span>
                                                             )
                                                         })}
@@ -114,7 +114,7 @@ const DetailAnime = (props) => {
                                                         { animeDetail.studios.map(function(studio) {
                                                             return (
                                                                 <span key = { studio.mal_id }> 
-                                                                    { studio.name } | 
+                                                                    { ' ' + studio.name } | 
                                                                 </span>
                                                             )
                                                         })} 
@@ -125,7 +125,7 @@ const DetailAnime = (props) => {
                                                         { animeDetail.genres.map(function(genre){
                                                             return (
                                                                 <span key = { genre.mal_id }> 
-                                                                    { genre.name } | 
+                                                                    {' ' + genre.name } | 
                                                                 </span>
                                                             )
                                                         })} 

@@ -16,7 +16,7 @@ const ListManga = () => {
     async function syncList() {
         setLoading(true);
         const manga = await getListManga();
-        setMangaList(manga.data);
+        setMangaList(manga.data.top);
         setLoading(false);
     }
 
@@ -49,8 +49,8 @@ const ListManga = () => {
                     }}
                     renderItem = { manga => (
                         <List.Item 
-                            key = { manga.id }
-                            actions = {[ <DetailMangaList manga = { manga }/> ]}
+                            key = { manga.mal_id }
+                            actions = {[ <DetailMangaList manga_id = { manga.mal_id }/> ]}
                         >    
                         </List.Item>
                     )}

@@ -9,20 +9,21 @@ export const getListManga = async() => {
     }
 
     try {
-        return await baseURL.get('manga/list');
+        return await baseURL.get('top/manga');
     } catch {
         return false;
     }
 };
 
-export const getManga = async(slug) => {
+export const getManga = async(mal_id) => {
 
     axios.defaults.headers = {
 		'Content-Type': 'application/json',
     }
 
     try {
-        return await baseURL.get(`manga/${ slug }`);
+        const detail = await baseURL.get(`manga/${ mal_id }`);
+        return detail.data;
     } catch {
         return false;
     }

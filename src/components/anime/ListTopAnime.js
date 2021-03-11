@@ -49,8 +49,8 @@ const ListTopAnime = () => {
                     }}
                     renderItem = { anime => (
                         <List.Item 
-                            key = { anime.id }
-                            actions = {[ <DetailAnime anime = { anime }/> ]}
+                            key = { anime.mal_id }
+                            actions = {[ <DetailAnime anime_id = { anime.mal_id }/> ]}
                         >
                         </List.Item>
                     )}

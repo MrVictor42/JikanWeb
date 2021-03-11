@@ -52,7 +52,7 @@ const ListAnime = (props) => {
                         renderItem = { anime => (
                             <List.Item 
                                 key = { anime.id }
-                                actions = {[ <DetailAnime anime = { anime }/> ]}
+                                actions = {[ <DetailAnime anime_id = { anime.mal_id }/> ]}
                             >
                             </List.Item>
                         )}
