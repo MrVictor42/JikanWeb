@@ -15,8 +15,8 @@ const ListTopAnime = () => {
 
     async function syncList() {
         setLoading(true);
-        const anime = await getListTopAnime();
-        setAnimeList(anime.data.top);
+        const top = await getListTopAnime();
+        setAnimeList(top);
         setLoading(false);
     }
 

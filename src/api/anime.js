@@ -38,37 +38,14 @@ export const getListTopAnime = async() => {
     }
 
     try {
-        return axios.get('https://api.jikan.moe/v3/top/anime');
+        const top = await axios.get('https://api.jikan.moe/v3/top/anime');
+        return top.data.top;
     } catch {
         return false;
     }
 }
 
-export const getTopAnime = async(slug) => {
 
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get(`topAnime/${ slug }`);
-    } catch {
-        return false;
-    }
-};
-
-export const getAnime = async(slug) => {
-
-    axios.defaults.headers = {
-		'Content-Type': 'application/json',
-    }
-
-    try {
-        return await baseURL.get(`anime/${ slug }`);
-    } catch {
-        return false;
-    }
-};
 
 export const getListAnimeDay = async(day) => {
 

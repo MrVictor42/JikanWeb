@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { List, Spin, Divider } from 'antd';
 
+import { currentSeason } from '../../services/consts';
+import { getListAnime } from '../../api/anime';
+
 import DetailAnime from './modals/DetailAnime';
-import notFound from '../../images/naruto_sad.gif';
 
 const ListAnime = (props) => {
 
@@ -10,21 +12,27 @@ const ListAnime = (props) => {
     const [animeList, setAnimeList] = useState([]);
 
     useEffect(() => {
-        setLoading(props.loading);
-        setAnimeList(props.list);
-    });
+        if(props.search === false) {
+            syncList();
+        } else {
+            setLoading(props.loading);
+            setAnimeList(props.list);
+        }
+    }, []);
+
+    async function syncList() {
+        setLoading(true);
+        const anime = await getListAnime();
+        setAnimeList(anime);
+        setLoading(false);
+    }
 
     return (
         animeList === undefined ? (
-            <>
-                <span className = 'spanNotFound'> 
-                    Not Found List Anime With This Gender and Producer Together... Try Another Combination or Click on "Restore" 
-                </span>
-                <img src = { notFound } alt = { 'Not Found Search' } className = 'sad_gif'/>
-            </>
+            null
         ) : (
             loading ? (
-                <Spin tip = 'Loading Anime List, Wait For ...' className = 'loadingSpin'/>
+                <Spin tip = { props.message } className = 'loadingSpin'/>
             ) : (
                 <>
                     <div 
@@ -33,7 +41,7 @@ const ListAnime = (props) => {
                     >
                         <div style = {{ display: 'flex', alignItems: 'center' }}>
                             <h2 style = {{ color: '#1890ff', textTransform: 'uppercase', fontSize: '18px', fontWeight: 700, letterSpacing: '1.2px', marginLeft: '40px' }}> 
-                                Anime List  
+                                Anime List of Season { currentSeason }
                             </h2>
                             <div style = {{ flex: 1, borderBottom: '1px solid #9e9e9e', marginLeft: '12px', borderRadius: '8px', marginRight: '35px' }}></div>
                         </div>
@@ -51,7 +59,7 @@ const ListAnime = (props) => {
                         }}
                         renderItem = { anime => (
                             <List.Item 
-                                key = { anime.id }
+                                key = { anime.mal_id }
                                 actions = {[ <DetailAnime anime_id = { anime.mal_id }/> ]}
                             >
                             </List.Item>

@@ -1,11 +1,13 @@
 import React from 'react';
 
-import Filterbar from '../layout/Filterbar';
+import ListAnime from '../anime/ListAnime';
+import ListAnimeDay from '../anime/ListAnimeDay';
 
 const Homepage = () => {
     return (
         <>
-            <Filterbar />
+            <ListAnimeDay />
+            <ListAnime search = { false } message = 'Loading Anime List, Wait For ...'/>
         </>
     );
 }

@@ -85,13 +85,6 @@ const DetailAnime = (props) => {
 
                                                     <p> <b> Status: </b> { animeDetail.status } </p>
 
-                                                    <p> <b> Airing Start:  </b> 
-                                                        { animeDetail.aired.prop.from.month + '-' + 
-                                                          animeDetail.aired.prop.from.day + '-' +
-                                                          animeDetail.aired.prop.from.year
-                                                        }
-                                                    </p>
-
                                                     { animeDetail.score === null ? (
                                                         <p> <b> Score: </b> Undefined </p>  
                                                     ) : (

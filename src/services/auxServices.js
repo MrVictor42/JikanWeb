@@ -29,3 +29,26 @@ export const currentSeasonAnime = (currentMonth) => {
 
     return season;
 };
+
+export const genreList = () => {
+
+    let genres = [];    
+    const names = [
+        'Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Mystery',
+        'Drama', 'Ecchi', 'Fantasy', 'Game', 'Hentai', 'Historical', 'Horror', 
+        'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Music', 'Parody', 'Samurai',
+        'Romance', 'School', 'Sci-Fi', 'Shoujo', 'Shoujo Ai', 'Shounen', 
+        'Shounen Ai', 'Space', 'Sports', 'Super Power', 'Vampire', 'Yaoi', 'Yuri',
+        'Harem', 'Slice of Life', 'Supernatural', 'Military', 'Police', 'Psychological',
+        'Thriller', 'Seinen', 'Josei'
+    ];
+
+    for(let aux = 0; aux < names.length; aux ++) {
+        genres.push({
+            value: aux + 1,
+            label: names[aux]
+        });
+    }
+
+    return genres;
+};

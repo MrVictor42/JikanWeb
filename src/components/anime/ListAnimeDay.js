@@ -6,7 +6,7 @@ import { dayOfWeek } from '../../services/auxServices';
 
 import DetailAnime from './modals/DetailAnime';
 
-const ListAnimeDay = (props) => {
+const ListAnimeDay = () => {
 
     const [loading, setLoading] = useState(true);
     const [animeList, setAnimeList] = useState([]);
@@ -51,7 +51,7 @@ const ListAnimeDay = (props) => {
     return (
         <>
             {
-                props.visible === true && loading === false ? (
+                loading === false ? (
                     <>
                         <div 
                             style = {{ fontFamily: 'Roboto,sans-serif', WebkitFontSmoothing: 'antialiased', 
