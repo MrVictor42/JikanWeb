@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { List, Spin, Divider } from 'antd';
 
-import { getListAnime } from '../../api/anime';
-
 import DetailAnime from './modals/DetailAnime';
 
-const ListAnime = (props) => {
+const ListAnimeAdvancedSearch = (props) => {
 
     const [loading, setLoading] = useState(true);
     const [animeList, setAnimeList] = useState([]);
 
     useEffect(() => {
-        syncList();
-    },[]);
-
-    async function syncList() {
-        setLoading(true);
-        const anime = await getListAnime();
-        setAnimeList(anime);
-        setLoading(false);
-    }
+        setLoading(props.loading);
+        setAnimeList(props.list);
+    });
 
     return (
         animeList === undefined ? (
@@ -66,4 +58,4 @@ const ListAnime = (props) => {
     );
 }
 
-export default ListAnime;
+export default ListAnimeAdvancedSearch;

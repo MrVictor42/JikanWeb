@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Cascader, Form, Button } from 'antd';
 
-import { getListAnime } from '../../api/anime';
+import { getListSearchGenre } from '../../api/anime';
 import { genreList } from '../../services/auxServices';
 
-import ListAnime from '../anime/ListAnime';
+import ListAnimeAdvancedSearch from '../anime/ListAnimeAdvancedSearch';
 
 const AdvancedSearch = () => {
 
     const [form] = Form.useForm();
   	const [formLayout] = useState('inline');
-	const [genders, setGenders] = useState('');
+	const [genres, setGenres] = useState('');
 	const [loading, setLoading] = useState(true);
     const [animeList, setAnimeList] = useState([]);
+	const [messageType, setMessageType] = useState('');
 
 	useEffect(() => {
 		const genres = genreList();
-		setGenders(genres);
+		setGenres(genres);
 	}, []);
 
     const onFinish = async (values) => {
-		const gender = values.gender;
-
+		const genre = values.gender;
 		setLoading(true);
+		const search = await getListSearchGenre('anime', genre[0]);
+		setAnimeList(search);
+		const valueGenre = genres.filter(function(genres) {
+			return genres.value == genre[0];
+		});
+		setMessageType(`Anime List of ${ valueGenre[0].label }`);
 		setLoading(false);
 	};
 
-	const restoreList = async() => {
-		setLoading(true);
-		const anime = await getListAnime();
-		setAnimeList(anime);
-		setLoading(false);
+	const restoreList = () => {
+		setMessageType('Empty list, please search anything ...');
+		setAnimeList([]);
 	}
 
     return (
@@ -42,14 +46,18 @@ const AdvancedSearch = () => {
 			>
 				<Form.Item 
 					label = { 
-						<b style = {{ color: '#1890ff', textTransform: 'uppercase' }}> 
+						<b style = {{ color: '#1890ff' }}> 
 							Genres 
 						</b> } 
-					name = { 'gender' }
+					name = { 'gender' } 
+					rules = {[{
+						required: true,
+						message: 'Please, Select a Genre.',
+					}]}
 				>
 					<Cascader
 						placeholder = { '' } 
-						options = { genders } 
+						options = { genres} 
 						style = {{ width: '120px' }} 
 					/>
 				</Form.Item>
@@ -68,9 +76,9 @@ const AdvancedSearch = () => {
 					</Button>
 				</Form.Item>
 			</Form>
-			<ListAnime 
-				list = { animeList } loading = { loading } search = { true } 
-				message = 'Waiting For Search ...'
+			<ListAnimeAdvancedSearch
+				list = { animeList } loading = { loading }
+				message = 'Waiting For Search...' messageType = { messageType }
 			/>
 		</>
     )
