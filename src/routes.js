@@ -14,7 +14,7 @@ const BaseRouter = () => (
         <Route exact path = '/list_anime' component = { Homepage } />
         <Route path = '/top_anime' component = { AnimeListTop } />
         <Route exact path = '/list_manga' component = { MangaList } />
-        <Route path = '/anime/:slug' component = { DetailAnimeSearch } />
+        <Route path = '/anime/search/:mal_id' component = { DetailAnimeSearch } />
         <Route path = '/contact' component = { Contact } />
         <Route path = '/advanced_search' component = { AdvancedSearch } />
     </>
