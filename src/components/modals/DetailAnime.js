@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Drawer, Image, Col, Row, Card, Spin } from 'antd';
 import ReactPlayer from 'react-player';
 
-import { getAnimeDetailFromJikan } from '../../../api/anime';
+import { getAnimeDetailFromJikan } from '../../api/anime';
 
 const { Meta } = Card;
 

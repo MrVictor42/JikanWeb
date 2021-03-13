@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { List, Spin, Divider } from 'antd';
 
-import DetailAnime from './modals/DetailAnime';
+import DetailAnime from '../modals/DetailAnime';
 
-const ListAnimeAdvancedSearch = (props) => {
-
-    const [loading, setLoading] = useState(true);
-    const [animeList, setAnimeList] = useState([]);
-
-    useEffect(() => {
-        setLoading(props.loading);
-        setAnimeList(props.list);
-    });
+const ListAnime = (props) => {
 
     return (
-        animeList === undefined ? (
+        props.animeList === undefined ? (
             null
         ) : (
-            loading ? (
+            props.loading ? (
                 <Spin tip = { props.message } className = 'loadingSpin'/>
             ) : (
                 <>
@@ -38,7 +30,7 @@ const ListAnimeAdvancedSearch = (props) => {
                             position: 'bottom', showSizeChanger: false, pageSize: 4 }
                         } 
                         grid = {{ column: 4 }}
-                        dataSource = { animeList } 
+                        dataSource = { props.animeList } 
                         style = {{ 
                             margin: 'auto', width: 'auto', paddingLeft: '30px', 
                             paddingRight: '35px' 
@@ -56,6 +48,6 @@ const ListAnimeAdvancedSearch = (props) => {
             )
         )
     );
-}
+};
 
-export default ListAnimeAdvancedSearch;
+export default ListAnime;

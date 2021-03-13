@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Drawer, Image, Col, Row, Spin } from 'antd';
 
-import { getManga } from '../../../api/manga';
+import { getManga } from '../../api/manga';
 
-const DetailMangaList = (props) => {
+const DetailManga = (props) => {
 
     const [visible, setVisible] = useState(false);
     const [mangaDetail, setMangaDetail] = useState();
@@ -107,4 +107,4 @@ const DetailMangaList = (props) => {
     )
 };
 
-export default DetailMangaList;
+export default DetailManga;

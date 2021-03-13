@@ -4,7 +4,7 @@ import { Cascader, Form, Button } from 'antd';
 import { getListSearchGenre } from '../../api/anime';
 import { genreList } from '../../services/auxServices';
 
-import ListAnimeAdvancedSearch from '../anime/ListAnimeAdvancedSearch';
+import ListAnime from '../lists/ListAnime';
 
 const AdvancedSearch = () => {
 
@@ -76,9 +76,10 @@ const AdvancedSearch = () => {
 					</Button>
 				</Form.Item>
 			</Form>
-			<ListAnimeAdvancedSearch
-				list = { animeList } loading = { loading }
-				message = 'Waiting For Search...' messageType = { messageType }
+			<ListAnime 
+				animeList = { animeList } loading = { loading } 
+				messageType = { messageType }
+				message = 'Waiting For Search...'
 			/>
 		</>
     )
