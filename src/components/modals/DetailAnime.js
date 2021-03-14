@@ -41,7 +41,7 @@ const DetailAnime = (props) => {
                         <a onClick = { showDrawer }>
                             <Image 
                                 className = 'img_list' src = { animeDetail.image_url }
-                                preview = 'false' 
+                                preview = { false } 
                             />    
                         </a>
                         <Drawer
