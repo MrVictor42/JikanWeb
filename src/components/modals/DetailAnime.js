@@ -40,8 +40,8 @@ const DetailAnime = (props) => {
                     <>
                         <a onClick = { showDrawer }>
                             <Image 
-                                className = 'img_list' src = { animeDetail.image_url } 
-                                preview = { false } 
+                                className = 'img_list' src = { animeDetail.image_url }
+                                preview = 'false' 
                             />    
                         </a>
                         <Drawer
@@ -49,7 +49,9 @@ const DetailAnime = (props) => {
                             width = { 1370 } height = { 'auto' }
                             placement = 'right' closable = { true } onClose = { onClose } visible = { visible } preview = { false }
                         >
-                            <Row gutter = { 20 } style = {{ width: 'auto', backgroundColor: 'white' }}>
+                            <Row 
+                                gutter = { 20 } style = {{ width: 'auto', backgroundColor: 'white' }}
+                            >
                                 <Col span = { 12 }>
                                     <Card 
                                         style = {{ 
@@ -60,7 +62,10 @@ const DetailAnime = (props) => {
                                     >
                                         <Meta
                                             avatar = {
-                                                <Image className = 'img_list' src = { animeDetail.image_url } />
+                                                <Image 
+                                                    className = 'img_list' 
+                                                    src = { animeDetail.image_url } 
+                                                />
                                             }
                                             title = { <b> { animeDetail.title } </b> }
                                             description = {

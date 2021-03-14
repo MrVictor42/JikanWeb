@@ -65,8 +65,12 @@ export const getListSearchGenre = async(type, genre_id) => {
     }
 
     try {
-        const search = await baseURL.get(`genre/${ type }/${ genre_id }`) 
-        return search.data.anime;
+        const search = await baseURL.get(`genre/${ type }/${ genre_id }`);
+        if(type === 'anime') {
+            return search.data.anime;
+        } else {
+            return search.data.manga;
+        }
     } catch {
         return false;
     }

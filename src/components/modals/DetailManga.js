@@ -38,7 +38,7 @@ const DetailManga = (props) => {
                         <a onClick = { showDrawer }>
                             <Image 
                                 className = 'img_list' src = { mangaDetail.image_url } 
-                                preview = { false } 
+                                preview = { false }
                             />    
                         </a>
                         <Drawer
@@ -49,7 +49,6 @@ const DetailManga = (props) => {
                             <Row>
                                 <Image 
                                     className = 'img_list' src = { mangaDetail.image_url } 
-                                    preview = { false } 
                                     style = {{ marginTop: '20px', marginLeft: '20px' }}
                                 />
                                 <Col span = { 12 } 
