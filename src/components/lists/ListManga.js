@@ -24,9 +24,11 @@ const ListManga = (props) => {
                 <List
                     itemLayout = 'vertical' size = 'small'
                     pagination = {{ 
-                        position: 'both', showSizeChanger: false }
+                        position: 'both', showSizeChanger: false, pageSize: 4 }
                     } 
-                    grid = {{ column: 5 }}
+                    grid = {{ 
+                        gutter: 20, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 4
+                    }}
                     dataSource = { props.mangaList } 
                     style = {{ 
                         margin: 'auto', width: 'auto', paddingLeft: '30px', 
