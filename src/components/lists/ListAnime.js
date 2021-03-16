@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Spin, Divider } from 'antd';
+import { List, Divider } from 'antd';
 
 import DetailAnime from '../modals/DetailAnime';
 
@@ -10,7 +10,7 @@ const ListAnime = (props) => {
             null
         ) : (
             props.loading ? (
-                <Spin tip = { props.message } className = 'loadingSpin'/>
+                <span> { props.message } </span>
             ) : (
                 <>
                     <div 
@@ -37,8 +37,8 @@ const ListAnime = (props) => {
                         }}
                         dataSource = { props.animeList } 
                         style = {{ 
-                            margin: 'auto', width: 'auto', paddingLeft: '30px', 
-                            paddingRight: '35px' 
+                            margin: 'auto', width: '100%', paddingLeft: '30px', 
+                            paddingRight: '35px', height: '100%' 
                         }}
                         renderItem = { anime => (
                             <List.Item 
@@ -48,7 +48,7 @@ const ListAnime = (props) => {
                             </List.Item>
                         )}
                     />
-                    <Divider />
+                    <Divider/>
                 </>
             )
         )

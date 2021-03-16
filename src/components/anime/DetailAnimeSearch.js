@@ -70,39 +70,6 @@ const DetailAnimeSearch = (props) => {
                                                 <p> <b> Score: </b> { anime.score } </p>
                                             )}
 
-                                            <p>
-                                                <b> Producers: </b>
-                                                { anime.producers.map(function(producer){
-                                                    return (
-                                                        <span key = { producer.mal_id }> 
-                                                            { ' ' + producer.name } |  
-                                                        </span>
-                                                    )
-                                                })}
-                                            </p>
-
-                                            <p> 
-                                                <b> Studios: </b> 
-                                                { anime.studios.map(function(studio) {
-                                                    return (
-                                                        <span key = { studio.mal_id }> 
-                                                            { ' ' + studio.name } | 
-                                                        </span>
-                                                    )
-                                                })} 
-                                            </p>
-
-                                            <p> 
-                                                <b>Genders: </b> 
-                                                { anime.genres.map(function(genre){
-                                                    return (
-                                                        <span key = { genre.mal_id }> 
-                                                            {' ' + genre.name } | 
-                                                        </span>
-                                                    )
-                                                })} 
-                                            </p>
-                                            
                                             <p> 
                                                 <b> Opening Theme: </b> 
                                                 { anime.opening_themes[0] } 

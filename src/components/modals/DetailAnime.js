@@ -42,7 +42,8 @@ const DetailAnime = (props) => {
                             <Image 
                                 className = 'img_list' src = { animeDetail.image_url }
                                 preview = { false } 
-                            />    
+                            />
+                            <h3 style = {{ color: 'white' }}> { animeDetail.title } </h3>    
                         </a>
                         <Drawer
                             title = { <b> { `Anime: ${ animeDetail.title }` } </b> } 
@@ -95,47 +96,6 @@ const DetailAnime = (props) => {
                                                     ) : (
                                                         <p> <b> Score: </b> { animeDetail.score } </p>
                                                     )}
-
-                                                    <p>
-                                                        <b> Producers: </b>
-                                                        { animeDetail.producers.map(function(producer){
-                                                            return (
-                                                                <span key = { producer.mal_id }> 
-                                                                    { ' ' + producer.name } |  
-                                                                </span>
-                                                            )
-                                                        })}
-                                                    </p>
-
-                                                    <p> 
-                                                        <b> Studios: </b> 
-                                                        { animeDetail.studios.map(function(studio) {
-                                                            return (
-                                                                <span key = { studio.mal_id }> 
-                                                                    { ' ' + studio.name } | 
-                                                                </span>
-                                                            )
-                                                        })} 
-                                                    </p>
-
-                                                    <p> 
-                                                        <b>Genders: </b> 
-                                                        { animeDetail.genres.map(function(genre){
-                                                            return (
-                                                                <span key = { genre.mal_id }> 
-                                                                    {' ' + genre.name } | 
-                                                                </span>
-                                                            )
-                                                        })} 
-                                                    </p>
-                                                    
-                                                    <p> 
-                                                        <b> Opening Theme: </b> 
-                                                        { animeDetail.opening_themes[0] } 
-                                                    </p>
-                                                    <p> <b> Ending Theme: </b> 
-                                                        { animeDetail.ending_themes[0] } 
-                                                    </p>                                
                                                 </>
                                             }
                                         />

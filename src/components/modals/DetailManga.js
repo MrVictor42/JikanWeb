@@ -39,12 +39,14 @@ const DetailManga = (props) => {
                             <Image 
                                 className = 'img_list' src = { mangaDetail.image_url } 
                                 preview = { false }
-                            />    
+                            />
+                            <h3 style = {{ color: 'white' }}> { mangaDetail.title } </h3>    
                         </a>
                         <Drawer
                             title = { <b> { `Manga: ${ mangaDetail.title }` } </b> } 
                             width = { 'auto' } height = { 'auto' }
-                            placement = 'right' closable = { true } onClose = { onClose } visible = { visible }
+                            placement = 'right' closable = { true } onClose = { onClose } 
+                            visible = { visible }
                         >
                             <Row>
                                 <Image 
@@ -52,7 +54,8 @@ const DetailManga = (props) => {
                                     style = {{ marginTop: '20px', marginLeft: '20px' }}
                                 />
                                 <Col span = { 12 } 
-                                    style = {{ marginTop: '20px', marginLeft: '20px', textAlign: 'justify' }}
+                                    style = {{ marginTop: '20px', marginLeft: '20px', 
+                                    textAlign: 'justify' }}
                                 >
                                     <p> <b> Title: </b> { mangaDetail.title } </p>
                                     <p> <b> Status: </b> { mangaDetail.status } </p>
@@ -89,13 +92,6 @@ const DetailManga = (props) => {
                                     <p> <b> Type: </b> { mangaDetail.type } </p>
                                     <p> <b> Synopsis: </b> { mangaDetail.synopsis } </p>
                                     <p> <b> Background: </b> { mangaDetail.background } </p>
-                                    <p> <b> Genres: </b> { mangaDetail.genres.map(function(genre){
-                                        return (
-                                            <span key = { genre.mal_id }>
-                                                { ' ' + genre.name } |
-                                            </span>
-                                        )
-                                    })} </p>
                                 </Col>
                             </Row>
                         </Drawer>

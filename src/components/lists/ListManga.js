@@ -31,8 +31,8 @@ const ListManga = (props) => {
                     }}
                     dataSource = { props.mangaList } 
                     style = {{ 
-                        margin: 'auto', width: 'auto', paddingLeft: '30px', 
-                        paddingRight: '35px' 
+                        margin: 'auto', width: '100%', paddingLeft: '30px', 
+                        paddingRight: '35px', height: '100%' 
                     }}
                     renderItem = { manga => (
                         <List.Item 

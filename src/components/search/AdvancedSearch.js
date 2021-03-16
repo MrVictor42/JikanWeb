@@ -125,6 +125,7 @@ const AdvancedSearch = () => {
 						mangaList = { mangaList } loading = { loading }
 						messageType = { messageType }
 						message = 'Waiting For Search...'
+						search = { true }
 					/>
 				)
 			}

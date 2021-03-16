@@ -22,12 +22,13 @@ const Searchbar = () => {
                 value: anime.title,
                 label: (
                     <>
-                        <Avatar 
-                            shape = 'square' size = { 64 } 
-                            icon = { <Image  src = { anime.image_url } />}
-                        />
-
-                        <a href = { `/anime/search/${ anime.mal_id }` }> <b> { anime.title } </b> </a>
+                        <a href = { `/anime/search/${ anime.mal_id }` }>
+                            <Avatar 
+                                shape = 'square' size = { 64 } 
+                                icon = { <Image  src = { anime.image_url } preview = { false }/> }
+                            />
+                                <b> { anime.title } </b>
+                        </a>
                     </>
                 )
             };
